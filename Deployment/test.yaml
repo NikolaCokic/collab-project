@@ -1,0 +1,30 @@
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-frontend
+  namespace: xray
+  labels:
+    app: portal-frontend
+spec:
+  selector:
+    matchLabels:
+      app: portal-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: portal-frontend
+        rolloutdate: 2022-05-07.1
+    spec:
+      containers:
+        - name: portal-frontend
+          image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
+          env:
+          - name: TITLE  #obrisati
+            value: "Welcome to Azure Kubernetes Service (AKS)" #obrisati
+      imagePullSecrets:
+      - name: azureregcred
