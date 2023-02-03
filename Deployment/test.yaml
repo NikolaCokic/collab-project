@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: portal-frontend
-  namespace: xray-staging
+  namespace: xray-dev
   labels:
     app: portal-frontend
 spec:
